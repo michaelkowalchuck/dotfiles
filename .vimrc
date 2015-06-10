@@ -1,4 +1,6 @@
 
+
+
  set nocompatible               " be iMproved
  filetype off                   " required!
 
@@ -60,6 +62,10 @@ map <F9> :set number!<CR>
 " use exctags with code http://vim-taglist.sourceforge.net
 map <F10> :TlistToggle<CR>
 
+" jump to next underscore, useful for C programs
+map <F11> /_<CR>:nohlsearch<CR>
+map <F4> :nohlsearch<CR>
+
 inoremap <F1> <ESC>
 nnoremap <F1> <ESC>
 vnoremap <F1> <ESC>
@@ -116,6 +122,24 @@ map <C-v><C-p> :tabp<CR>
 command FOR exe "normal afor(;;) {\n\n}\e<k><k>"
 command WHILE exe "normal awhile() {\n\n}<k><k>"
 command IF exe "normal aif() {\n\n}<k><k>"
+command SC exe "normal astd::cout << \""
+command SE exe "normal a << std::endl;"
+command COUT exe "normal astd::cout << \"\" << std::endl;"
+command SS exe "normal astd::string"
+command CSS exe "normal aconst std::string"
+command SV exe "normal astd::vector<"
+command CSV exe "normal aconst std::vector<"
+command SVSS exe "normal astd::vector<std::string> "
+command SVI exe "normal astd::vector<int> "
+command CSVSS exe "normal aconst std::vector<std::string> "
+command CSVI exe "normal aconst std::vector<int> "
+command SM exe "normal astd::map<,> "
+command PF0 exe "normal aprintf(\"\\n\");"
+command PF exe "normal aprintf(\"%d\\n\",);"
+command FATAL exe "normal astd::cout << \"FATAL ERROR\" << std::endl;"
+command STDCC exe "normal a\n\n#include <iostream>\n#include <map>\n#include <vector>\n#include <string>\n#include <sstream>\n#include <fstream>\n#include <cstdlib>\n#include <cmath>\n#include <algorithm>\n#include <cctype>\n#include <new>\n\nint main(int argc,char **argv)\n{\n\n\treturn 0;\n}\n\n"
+
+command STDPY exe "normal a#!/usr/bin/env python\n\nimport string\nimport time\nimport datetime\nimport os\nimport sys\nimport random\nimport shutil\nimport sqlite3\nimport zipfile\nimport cgi\nimport Cookie\n\n#sys.path.append(os.path.abspath(\"foo\"))\n\ndef usage():\n\tprint \"\"\n\tprint \"\"\n\tprint \"\"\n\ndef main_function(argv):\n\n\n\tprint \"done\"\n\n\n\nif __name__==\"__main__\":\n\tmain_function(sys.argv)\n\n"
 
 " center the window on current line is now mapped to spacebar in normal mode
 nmap <space> zz
@@ -147,6 +171,4 @@ execute pathogen#infect()
 	" This next line fixes it.
 	" I have read that setting LANG environment var can fix it too
 let g:NERDTreeDirArrows=0
-
-
 
